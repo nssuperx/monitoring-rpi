@@ -1,2 +1,2 @@
-# various-monitor-rpi
+# monitoring-rpi
 raspberry piでいろいろモニターしてみる
