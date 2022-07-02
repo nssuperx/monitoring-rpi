@@ -29,7 +29,7 @@ def main():
     if_external_ip = result.get("interface").get("externalIp")
     server_id = result.get("server").get("id")
 
-    dbname = "test.db"
+    dbname = "speedtest.db"
     conn = sqlite3.connect(dbname)
     cur = conn.cursor()
 
