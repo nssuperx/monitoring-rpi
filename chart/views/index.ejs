@@ -17,7 +17,7 @@
 <script>
   async function genGraph(){
     const ctx = document.getElementById('myChart');
-    const res = await fetch("http://localhost:3000/graphdata")
+    const res = await fetch("http://<%= ip %>:<%= port %>/graphdata")
     const data = await res.json();
     const myChart = new Chart(ctx, data);
   }
