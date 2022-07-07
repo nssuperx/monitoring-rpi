@@ -7,34 +7,7 @@ const getData = async () => {
         .then(res => {
             return res;
         });
-
-    const timestamp = [];
-    const down_bandwidth = [];
-    const up_bandwidth = [];
-
-    for (let i = 0; i < rows.length; i++) {
-        timestamp.push(rows[i].timestamp);
-        down_bandwidth.push(rows[i].download_bandwidth / 125000);
-        up_bandwidth.push(rows[i].upload_bandwidth / 125000);
-    }
-
-    return {
-        type: 'line',
-        data: {
-            labels: timestamp,
-            datasets: [{
-                label: 'download',
-                data: down_bandwidth,
-                borderColor: 'rgba(255, 99, 132, 1)'
-            },
-            {
-                label: 'upload',
-                data: up_bandwidth,
-                borderColor: 'rgba(132, 99, 255, 1)'
-            }]
-        },
-        options: {}
-    };
+    return rows;
 };
 
 const dbget = (sql) => {
