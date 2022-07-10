@@ -6,7 +6,7 @@ ARG GROUP_NAME
 ARG GROUP_ID
 
 RUN apt update && apt upgrade -y
-RUN apt install vim curl wget bash-completion jq sqlite3 python3 -y
+RUN apt install vim curl wget bash-completion jq sqlite3 python3 apache2 -y
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
     apt install -y nodejs
 

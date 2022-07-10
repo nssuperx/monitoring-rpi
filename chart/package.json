@@ -4,14 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "NODE_ENV=development node app.js"
   },
   "author": "",
   "license": "CC0-1.0",
   "dependencies": {
     "express": "^4.18.1",
     "http-errors": "^2.0.0",
-    "ip": "^1.1.8",
     "sqlite3": "^5.0.8"
   }
 }

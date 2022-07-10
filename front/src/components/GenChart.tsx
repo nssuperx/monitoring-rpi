@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,13 +27,14 @@ interface SpeedData {
   upload_bandwidth: number
 }
 
-const port_api = 3001;
+const port_api = process.env.REACT_APP_FETCH_PORT;
+const host = process.env.REACT_APP_IP;
 
 export const GenChart = () => {
   const [posts, setPosts] = useState<SpeedData[]>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:${port_api}/graphdata`)
+    fetch(`http://${host}:${port_api}/graphdata`)
       .then(res => res.json())
       .then(data => {
         setPosts(data);

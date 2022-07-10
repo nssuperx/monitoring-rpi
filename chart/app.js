@@ -5,11 +5,7 @@ const createError = require('http-errors');
 const express = require('express');
 const indexRouter = require('./routes/index');
 const app = express();
-const ip = require('ip')
-const setting = require('./appsettings.json')
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const config = require('./config')
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
@@ -31,9 +27,8 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-const port = setting.port;
+const port = config.port;
 
 app.listen(port, () => {
     console.log(`Starting server on port ${port}!`);
-    console.log(`http://${ip.address()}:${port}/`);
 });
