@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "chart"
+		},
+		{
+			"path": "front"
+		}
+	],
+	"settings": {}
+}
