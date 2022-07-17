@@ -8,7 +8,6 @@ const { host, port, portFront } = appsetting;
 
 app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', `http://${host}:${portFront}`);
-  res.setHeader('Access-Control-Allow-Origin', `http://${host}`);
   next();
 });
 

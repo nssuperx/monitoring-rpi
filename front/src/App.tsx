@@ -1,12 +1,14 @@
 import React from 'react';
-import { GenChart } from './components/GenChart';
+import GenChart from './components/GenChart';
+// import DateButton from './components/FetchButton';
 
-function App() {
+const App = () => {
   return (
     <div>
+      {/* <DateButton /> */}
       <GenChart />
     </div>
   );
-}
+};
 
 export default App;

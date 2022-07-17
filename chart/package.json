@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development node app.js"
+    "start": "NODE_ENV=development node ./dist/app.js"
   },
   "author": "",
   "license": "CC0-1.0",

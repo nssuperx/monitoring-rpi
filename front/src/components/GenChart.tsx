@@ -7,7 +7,7 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -27,42 +27,42 @@ interface SpeedData {
   upload_bandwidth: number
 }
 
-const port_api = process.env.REACT_APP_FETCH_PORT;
+const apiPort = process.env.REACT_APP_FETCH_PORT;
 const host = process.env.REACT_APP_IP;
 
-export const GenChart = () => {
+const GenChart = () => {
   const [posts, setPosts] = useState<SpeedData[]>([]);
 
   useEffect(() => {
-    fetch(`http://${host}:${port_api}/graphdata`)
-      .then(res => res.json())
-      .then(data => {
+    fetch(`http://${host}:${apiPort}/graphdata`)
+      .then((res) => res.json(), () => {})
+      .then((data: SpeedData[]) => {
         setPosts(data);
-      })
+      }, () => {});
   }, []);
 
   const speedDataRows = posts;
-  const timestamp = [];
-  const down_bandwidth = [];
-  const up_bandwidth = [];
+  const timestamp: string[] = [];
+  const downBandwidth: number[] = [];
+  const upBandwidth: number[] = [];
 
-  for (let i = 0; i < speedDataRows.length; i++) {
-    timestamp.push(speedDataRows[i].timestamp);
-    down_bandwidth.push(speedDataRows[i].download_bandwidth / 125000);
-    up_bandwidth.push(speedDataRows[i].upload_bandwidth / 125000);
-  }
+  speedDataRows.forEach((data) => {
+    timestamp.push(data.timestamp);
+    downBandwidth.push(data.download_bandwidth / 125000);
+    upBandwidth.push(data.upload_bandwidth / 125000);
+  });
 
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'top' as const
       },
       title: {
         display: true,
-        text: 'Network Speed',
-      },
-    },
+        text: 'Network Speed'
+      }
+    }
   };
 
   const labels = timestamp;
@@ -72,16 +72,18 @@ export const GenChart = () => {
     datasets: [
       {
         label: 'download',
-        data: down_bandwidth,
-        borderColor: 'rgba(255, 99, 132, 1)',
+        data: downBandwidth,
+        borderColor: 'rgba(255, 99, 132, 1)'
       },
       {
         label: 'upload',
-        data: up_bandwidth,
-        borderColor: 'rgba(132, 99, 255, 1)',
-      },
-    ],
+        data: upBandwidth,
+        borderColor: 'rgba(132, 99, 255, 1)'
+      }
+    ]
   };
 
   return <Line options={options} data={data} />;
-}
+};
+
+export default GenChart;
