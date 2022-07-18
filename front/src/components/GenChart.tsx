@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +10,7 @@ import {
   Legend
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { GenChartProps } from './SpeedTestTypes';
 
 ChartJS.register(
   CategoryScale,
@@ -21,27 +22,10 @@ ChartJS.register(
   Legend
 );
 
-interface SpeedData {
-  timestamp: string
-  download_bandwidth: number
-  upload_bandwidth: number
-}
+const GenChart = (props: GenChartProps) => {
+  const { speedDatas } = props;
 
-const apiPort = process.env.REACT_APP_FETCH_PORT;
-const host = process.env.REACT_APP_IP;
-
-const GenChart = () => {
-  const [posts, setPosts] = useState<SpeedData[]>([]);
-
-  useEffect(() => {
-    fetch(`http://${host}:${apiPort}/graphdata`)
-      .then((res) => res.json(), () => {})
-      .then((data: SpeedData[]) => {
-        setPosts(data);
-      }, () => {});
-  }, []);
-
-  const speedDataRows = posts;
+  const speedDataRows = speedDatas;
   const timestamp: string[] = [];
   const downBandwidth: number[] = [];
   const upBandwidth: number[] = [];

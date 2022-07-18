@@ -1,12 +1,10 @@
 import React from 'react';
-import GenChart from './components/GenChart';
-// import DateButton from './components/FetchButton';
+import SpeedTest from './components/SpeedTest';
 
 const App = () => {
   return (
     <div>
-      {/* <DateButton /> */}
-      <GenChart />
+      <SpeedTest />
     </div>
   );
 };
