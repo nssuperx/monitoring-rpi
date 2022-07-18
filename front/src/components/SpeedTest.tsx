@@ -19,13 +19,14 @@ const host = process.env.REACT_APP_IP;
 
 const SpeedTest = () => {
   const [dateBE, setDateBE] = useState<DateBeginEnd>({
-    begin: formatDate(new Date()),
+    begin: formatDate(new Date('2021-01-01 00:00:00')),
     end: formatDate(new Date())
   });
   const [speedData, setSpeedData] = useState<SpeedData[]>([]);
 
   useEffect(() => {
-    fetch(`http://${host}:${apiPort}/graphdata`)
+    const query = new URLSearchParams({ begin: dateBE.begin, end: dateBE.end });
+    fetch(`http://${host}:${apiPort}/graphdata?${query}`)
       .then((res) => res.json(), () => {})
       .then((data: SpeedData[]) => { setSpeedData(data); }, () => {});
   }, [dateBE]);

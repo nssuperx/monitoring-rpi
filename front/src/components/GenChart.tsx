@@ -30,11 +30,13 @@ const GenChart = (props: GenChartProps) => {
   const downBandwidth: number[] = [];
   const upBandwidth: number[] = [];
 
-  speedDataRows.forEach((data) => {
-    timestamp.push(data.timestamp);
-    downBandwidth.push(data.download_bandwidth / 125000);
-    upBandwidth.push(data.upload_bandwidth / 125000);
-  });
+  if (speedDataRows !== undefined) {
+    speedDataRows.forEach((data) => {
+      timestamp.push(data.timestamp);
+      downBandwidth.push(data.download_bandwidth / 125000);
+      upBandwidth.push(data.upload_bandwidth / 125000);
+    });
+  }
 
   const options = {
     responsive: true,

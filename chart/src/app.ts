@@ -7,7 +7,12 @@ const app: express.Express = express();
 const { host, port, portFront } = appsetting;
 
 app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-  res.setHeader('Access-Control-Allow-Origin', `http://${host}:${portFront}`);
+  // TODO: 何とかしたい...
+  if (portFront === 80) {
+    res.setHeader('Access-Control-Allow-Origin', `http://${host}`);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', `http://${host}:${portFront}`);
+  }
   next();
 });
 
