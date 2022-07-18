@@ -1,5 +1,5 @@
 import express from 'express';
-import getData from '../models/generate-data';
+import getData from '../models/GenerateData';
 
 const router = express.Router();
 

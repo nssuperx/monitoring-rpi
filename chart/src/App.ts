@@ -1,7 +1,7 @@
 import express from 'express';
 
 import indexRouter from './routes/index';
-import appsetting from './appsetting';
+import appsetting from './AppSetting';
 
 const app: express.Express = express();
 const { host, port, portFront } = appsetting;
