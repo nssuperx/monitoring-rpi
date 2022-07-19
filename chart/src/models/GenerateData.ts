@@ -13,7 +13,7 @@ const dbget = (sql: string): Promise<SpeedData[]> => new Promise((resolve, rejec
 
 const getData = async (req: express.Request): Promise<SpeedData[]> => {
   const { begin, end } = req.query;
-  const rows = await dbget(`SELECT datetime(timestamp, "localtime") as timestamp, download_bandwidth, upload_bandwidth FROM speedtest WHERE datetime(timestamp) BETWEEN datetime("${begin}") AND datetime("${end}")`)
+  const rows = await dbget(`SELECT datetime(timestamp, "localtime") as timestamp, download_bandwidth, upload_bandwidth FROM speedtest WHERE datetime(timestamp, "localtime") BETWEEN datetime("${begin}") AND datetime("${end}")`)
     .then((res) => res);
   return rows;
 };

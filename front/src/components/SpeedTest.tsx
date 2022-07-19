@@ -14,19 +14,26 @@ const formatDate = (date: Date): string => {
   return `${year}-${month}-${dd}T${hour}:${min}`;
 };
 
-const apiPort = process.env.REACT_APP_FETCH_PORT;
-const host = process.env.REACT_APP_IP;
+// NOTE: 設定スクリプトを別に作る以外の良さげな対策法を現時点で知らないので、これで妥協
+const NA = 'Not available';
+const apiPort = process.env.REACT_APP_FETCH_PORT || NA;
+const host = process.env.REACT_APP_IP || NA;
+const isAvailable = apiPort !== NA && host !== NA;
 
 const SpeedTest = () => {
   const [dateBE, setDateBE] = useState<DateBeginEnd>({
-    begin: formatDate(new Date('2021-01-01 00:00:00')),
+    begin: formatDate(new Date('2022-06-01 00:00:00')),
     end: formatDate(new Date())
   });
   const [speedData, setSpeedData] = useState<SpeedData[]>([]);
 
   useEffect(() => {
+    // NOTE: 上述の通り
+    if (isAvailable === false) return;
+
+    // TODO: 冗長である
     const query = new URLSearchParams({ begin: dateBE.begin, end: dateBE.end });
-    fetch(`http://${host}:${apiPort}/graphdata?${query}`)
+    fetch(`http://${host}:${apiPort}/graphdata?${query.toString()}`)
       .then((res) => res.json(), () => {})
       .then((data: SpeedData[]) => { setSpeedData(data); }, () => {});
   }, [dateBE]);
@@ -43,6 +50,7 @@ const SpeedTest = () => {
 
   return (
     <div>
+      {isAvailable || <p>{NA}</p>}
       <DateForm date={dateBE} onChange={handleChange} onSubmit={handleSubmit} />
       <GenChart speedDatas={speedData} />
     </div>
