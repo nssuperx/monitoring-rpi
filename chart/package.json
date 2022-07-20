@@ -7,7 +7,10 @@
     "start": "NODE_ENV=development node ./dist/App.js",
     "build": "./node_modules/.bin/tsc"
   },
-  "author": "",
+  "author": {
+    "name": "nssuperx"
+  },
+  "private": true,
   "license": "CC0-1.0",
   "dependencies": {
     "express": "^4.18.1",
@@ -24,6 +27,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "license-checker": "^25.0.1",
     "ts-node": "^10.8.2",
     "typescript": "^4.7.4"
   }

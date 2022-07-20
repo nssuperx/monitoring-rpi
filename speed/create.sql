@@ -27,6 +27,27 @@ create table servers
     port INTEGER,
     name TEXT,
     location TEXT,
-    country TEXT
+    country TEXT,
     ip TEXT
 );
+
+create view speedtest_jst as select
+    id,
+    datetime(timestamp, "localtime") as timestamp,
+    ping_jitter,
+    ping_latency,
+    download_bandwidth,
+    download_bytes,
+    download_elapsed,
+    upload_bandwidth,
+    upload_bytes,
+    upload_elapsed,
+    packetloss,
+    isp,
+    if_internal_ip,
+    if_name,
+    if_mac,
+    if_is_vpn,
+    if_external_ip,
+    server_id
+from speedtest;
