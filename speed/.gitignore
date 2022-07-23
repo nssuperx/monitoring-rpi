@@ -1,3 +1,4 @@
 speedtest*
 *.json
 *.db
+*.log

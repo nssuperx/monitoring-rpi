@@ -2,9 +2,11 @@
 raspberry piでいろいろモニターしてみる
 
 ## やること
-* TypeScriptで書き直し
-* APIの機能を増やす
-  * 時間指定できるようにしたりなど
+* リファクタリング
 * ほかにもモニタリングしてみる
   * CPU温度
   * 気温、湿度
+
+## 回線速度
+
+![speedtest](./image/speedtest.png)

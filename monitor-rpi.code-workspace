@@ -4,7 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "chart"
+			"path": "server"
 		},
 		{
 			"path": "front"

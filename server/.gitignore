@@ -103,5 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# archive
-*.zip
+# Setting
+AppSetting.ts
